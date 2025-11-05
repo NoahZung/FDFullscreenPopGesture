@@ -189,6 +189,9 @@ typedef void (^_FDViewControllerWillAppearInjectBlock)(UIViewController *viewCon
     _FDViewControllerWillAppearInjectBlock block = ^(UIViewController *viewController, BOOL animated) {
         __strong typeof(weakSelf) strongSelf = weakSelf;
         if (strongSelf) {
+            if ([viewController isKindOfClass:NSClassFromString(@"ICDocCamImageQuadEditViewController")]) {
+                return;
+            }
             [strongSelf setNavigationBarHidden:viewController.fd_prefersNavigationBarHidden animated:animated];
         }
     };
